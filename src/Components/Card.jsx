@@ -13,7 +13,7 @@ function Card({ NotesStrorage, DeleteNote, EditNote }) {
                                 <div className="card mx-auto" style={{ width: '15rem' }}>
                                     <div className="card-body">
                                         <h5 className="card-title">{e.NoteHeading}</h5>
-                                        <p className="card-text">{e.NoteDescription}</p>
+                                        <div className="card-text" dangerouslySetInnerHTML={{ __html: e.NoteDescription }}></div>
                                         <button type="button" className=" btn btn-info" id="EditBtn" onClick={(e) => EditNote(i)}>Edit</button>
                                         <button type="button" className=" btn btn-danger" id="DeleteBtn" onClick={(e) => DeleteNote(i)}>Delete</button>
                                     </div>

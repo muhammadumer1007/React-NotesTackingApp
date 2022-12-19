@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css';
 import Main from './Components/Main';
 import Header from './Components/Header';
@@ -58,7 +58,6 @@ function App() {
           NoteHeading: NoteHeadingInput,
           NoteDescription: NoteDescriptionInput
         }
-
         NotesArr = JSON.parse(localStorage.getItem('NotesArray'))
         NotesArr.push(NotesObj)
 
@@ -92,9 +91,12 @@ function App() {
   const HandleNoteHeading = (event) => {
     setNoteHeadingInput(event.target.value)
   }
-  const HandleNoteDescription = (event) => {
-    setNoteDescriptionInput(event.target.value)
-  }
+
+  // this finction is commited because of using react quill which has a built in function . we directly put usestate in onchange function
+
+  // const HandleNoteDescription = (event) => {
+  //   setNoteDescriptionInput(event.target.value)
+  // }
 
   const handleShowAlert = (msg) => {
     setShowAlert(true)
@@ -112,9 +114,9 @@ function App() {
       <Header />
       <Main
         Add={Add}
-        NoteHeadingInput={NoteHeadingInput} NoteDescriptionInput={NoteDescriptionInput} HandleNoteHeading={HandleNoteHeading} HandleNoteDescription={HandleNoteDescription}
+        NoteHeadingInput={NoteHeadingInput} NoteDescriptionInput={NoteDescriptionInput} HandleNoteHeading={HandleNoteHeading} // HandleNoteDescription={HandleNoteDescription}
         NotesStrorage={NotesStrorage} DeleteNote={DeleteNote} EditNote={EditNote} AddBtnTxt={AddBtnTxt} CancelBtn={CancelBtn}
-        clear={clear} NoNotes={NoNotes}
+        clear={clear} NoNotes={NoNotes} setNoteDescriptionInput={setNoteDescriptionInput}
       />
       {ShowAlert && <Alert ShowAlertMsg={ShowAlertMsg} />}
     </div>
