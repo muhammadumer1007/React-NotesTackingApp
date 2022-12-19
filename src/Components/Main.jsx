@@ -14,7 +14,7 @@ const Main = (
     const TitleRef = useRef(null)
 
     useEffect(() => {
-        if (NotesStrorage.length <= 0) {
+        if (!NotesStrorage || NotesStrorage.length <= 0) {
             TitleRef.current.focus()
         }
     }, []);
